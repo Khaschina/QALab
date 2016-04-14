@@ -12,7 +12,7 @@ public class Workers implements CompanysWorker {
     static Map<CompanysWorker,Integer> workers = new HashMap<>(Workers.workersNumber ());
     static Map<CompanysWorker,Integer> cleaner = new HashMap<>(Workers.workersNumber ());
 
-    public int project;
+    public static int project;
 
     public static int randomNumberForWorkers()
     {
@@ -37,18 +37,18 @@ public class Workers implements CompanysWorker {
         for(int i = 0;i <Workers.workersNumber () + 3;i++)
         {
 
-            if (Chiefs.randomTask () == 0) {
+            if (randomNumberForWorkers() == 0) {
                  workers.put(new Developer (),projects);
             }
-            else if(Chiefs.randomTask () == 1)
+            else if(randomNumberForWorkers () == 1)
             {
                 workers.put(new Tester (),projects);
             }
-            else if(Chiefs.randomTask () == 2)
+            else if(randomNumberForWorkers() == 2)
             {
                 workers.put(new Designer(),projects);
             }
-            else if(Chiefs.randomTask () == 7)
+            else if(randomNumberForWorkers() == 7)
             {
                 cleaner.put(new com.Ekhaschina.Cleaner(),projects);
             }
@@ -71,7 +71,7 @@ public class Workers implements CompanysWorker {
 
     public static void main(String[] args) {
 
-        createdWorkers(workers,randomNumberForWorkers());
+        createdWorkers(workers,project);
         lookingForMyMap(workers);
     }
 }
